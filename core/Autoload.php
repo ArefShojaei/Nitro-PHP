@@ -39,16 +39,14 @@ class Autoload {
     private function loadClasses(): void {
         # register autoload for classes
         spl_autoload_register(function($className) {
-            # get classes of the autoload JSON config
-            $classes = $this->contracts->classes;
+            # get all paths
+            $paths = $this->contracts->classes;
 
-            foreach($classes as $class) {
-                # replace "\\" to "/" that converts to a string as a file path of a namespace
-                $file = str_replace("\\", "/", $className) . ".php";
+            # replace "\\" to "/" that converts to a string as a file path of a namespace
+            $file = str_replace("\\", "/", $className) . ".php";
 
-                # check for existsing the file for including
-                file_exists($file) && require_once $file;
-            }
+            # check for existsing the file for including
+            file_exists($file) && require_once $file;
         });
     }
 
