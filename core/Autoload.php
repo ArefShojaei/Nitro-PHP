@@ -17,17 +17,28 @@ class Autoload {
      * @constructor
      */
     public function __construct() {
+        # set the json data as a object
+        $this->contracts = $this->parse();
+
+        # load classes
+        $this->loadClasses();
+
+        # load functions
+        $this->loadFunctions();
+    }
+
+    /**
+     * @desc parse autoload JSON file
+     * @method
+     * @private
+     * @return {object}
+     */
+    private function parse(): object {
         # get autoload.json content
         $jsonContent = file_get_contents("autoload.json");
 
-        # decode the json content to a Array
-        $extractedJsonContent = json_decode($jsonContent);
-
-        # set the Array data to $contracts property
-        $this->contracts = $extractedJsonContent;
-
-        $this->loadClasses();
-        $this->loadFunctions();
+        # decode the json content to an object
+        return json_decode($jsonContent);
     }
 
     /**
@@ -35,6 +46,7 @@ class Autoload {
      * @method
      * @private
      * @name loadClasses
+     * @return {void}
      */
     private function loadClasses(): void {
         # register autoload for classes
@@ -55,6 +67,7 @@ class Autoload {
      * @method
      * @private
      * @name loadFunctions
+     * @return {void}
      */
     private function loadFunctions(): void {
         # get all paths
