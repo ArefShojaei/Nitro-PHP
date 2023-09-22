@@ -29,9 +29,15 @@ class Autoload {
         $this->loadClasses();
     }
 
-    private function loadClasses() {
+    /**
+     * @desc Load classes 
+     * @method
+     * @private
+     * @name loadClasses
+     */
+    private function loadClasses(): void {
         # register autoload for classes
-        return spl_autoload_register(function($className) {
+        spl_autoload_register(function($className) {
             # get classes of the autoload JSON config
             $classes = $this->contracts->classes;
 
@@ -40,7 +46,7 @@ class Autoload {
                 $file = str_replace("\\", "/", $className) . ".php";
 
                 # check for existsing the file for including
-                return file_exists($file) && require_once $file;
+                file_exists($file) && require_once $file;
             }
         });
     }
