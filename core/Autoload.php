@@ -27,6 +27,7 @@ class Autoload {
         $this->contracts = $extractedJsonContent;
 
         $this->loadClasses();
+        $this->loadFunctions();
     }
 
     /**
@@ -50,4 +51,35 @@ class Autoload {
             }
         });
     }
+
+    /**
+     * @desc Load functions 
+     * @method
+     * @private
+     * @name loadFunctions
+     */
+    private function loadFunctions(): void {
+        # get all paths
+        $paths = $this->contracts->functions;
+
+        foreach($paths as $path) {
+            # get list of all files in that directory 
+            $files = scandir($path);
+
+            # remove "." & ".." from the array
+            unset($files[0]);
+            unset($files[1]);
+
+            # get values of the array in a new Array
+            $functions = array_values($files);
+
+            foreach($functions as $function) {
+                # contact path and filename as a function
+                $file = $path . $function;
+        
+                # check for existsing the file for including
+                file_exists($file) && require_once $file;
+            }
+        }
+    } 
 }
