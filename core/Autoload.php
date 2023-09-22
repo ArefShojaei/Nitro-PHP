@@ -25,5 +25,19 @@ class Autoload {
 
         # set the Array data to $contracts property
         $this->contracts = $extractedJsonContent;
+
+        $this->loadClasses();
+    }
+
+    private function loadClasses() {
+        return spl_autoload_register(function($className) {
+            $classes = $this->contracts->classes;
+
+            foreach($classes as $class) {
+                $file = str_replace("\\", "/", $className) . ".php";
+
+                return file_exists($file) && require_once $file;
+            }
+        });
     }
 }
