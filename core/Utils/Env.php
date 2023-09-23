@@ -10,7 +10,7 @@ namespace Core\Utils;
  */
 use Core\{
     Validators\Env as Validator,
-    Contracts\Interfaces\Env as EnvInterface
+    Contracts\Interfaces\Env\Env as EnvInterface
 };
 
 
