@@ -8,7 +8,7 @@ namespace Core\Validators;
 /**
  * @package
  */
-use Core\Contracts\Interfaces\EnvValidator as EnvValidatorInterface;
+use Core\Contracts\Interfaces\Env\EnvValidator as EnvValidatorInterface;
 
 
 /**
