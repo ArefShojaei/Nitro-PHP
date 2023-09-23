@@ -70,7 +70,7 @@ class Env implements EnvInterface {
         $content = self::parse(self::FILE_PATH);
 
         # declare regex pattern for getting keys & values
-        $pattern = "/(\w+)\s*=\s*(\w+)/";
+        $pattern = "/(\w+)\s*=\s*(.+)/";
 
         # check for matching the regex 
         preg_replace_callback($pattern, function($matches) {
