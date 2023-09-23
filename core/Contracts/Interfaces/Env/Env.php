@@ -13,16 +13,6 @@ namespace Core\Contracts\Interfaces\Env;
  */
 interface Env {
     /**
-     * @desc declare the "init" method for basic configuration
-     * @method
-     * @public
-     * @static
-     * @name init
-     * @return {void}
-     */
-    public static function init(): void;
-
-    /**
      * @desc declare the "get" method for getting key by name
      * @method
      * @public
