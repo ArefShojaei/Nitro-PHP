@@ -21,7 +21,7 @@ use Core\{
  */
 class Config implements ConfigInterface {
     /**
-     * @desc base path folder
+     * @desc base folder path 
      * @prop
      * @private
      * @constant {string}
