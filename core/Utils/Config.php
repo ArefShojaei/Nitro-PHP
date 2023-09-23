@@ -48,12 +48,16 @@ class Config implements ConfigInterface {
      * return {self}
      */
     public static function find(string $filename): self {
+        # get full file path
         $file = self::BASE_PATH . $filename . ".php";
         
+        # check for existsing the Config file
         Validator::checkFileExists($file);
 
+        # include file & save config data
         self::$loadedConfigData = include $file;
 
+        # access to other methods of this class
         return new self;
     }
 
@@ -67,6 +71,7 @@ class Config implements ConfigInterface {
      * @return {string}
      */
     public static function get(string $key): string {
+        # get value of the config data by name
         return self::$loadedConfigData[$key];
     }
 
@@ -79,6 +84,7 @@ class Config implements ConfigInterface {
      * @return {array} 
      */
     public static function all(): array {
+        # get all the config data file 
         return self::$loadedConfigData;
     }
 }
