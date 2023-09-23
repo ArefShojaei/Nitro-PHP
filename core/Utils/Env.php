@@ -42,20 +42,16 @@ class Env implements EnvInterface {
 
     
     /**
-     * @desc init Env configuration
-     * @method
-     * @public
-     * @static
-     * @name init
-     * @return {void}
+     * @constructor
      */
-    public static function init(): void {
+    public function __construct() {
         # check for existsing the Env file
         Validator::checkFileExists(self::FILE_PATH);
 
         # build pattern & set to "$_ENV" global variables
         self::buildPattern();
     }
+
 
     /**
      * @desc build pattern for getting and setting key & values of the Env file content
