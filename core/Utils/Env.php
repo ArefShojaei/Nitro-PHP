@@ -25,6 +25,7 @@ class Env implements EnvInterface {
      * @prop
      * @private
      * @constant {string}
+     * @default
      * return {string}
      */
     private const FILE_EXTENTION = '.env';
@@ -34,6 +35,7 @@ class Env implements EnvInterface {
      * @prop
      * @private
      * @constant {string}
+     * @default
      * return {string}
      */
     private const FILE_PATH = self::FILE_EXTENTION;
@@ -58,9 +60,9 @@ class Env implements EnvInterface {
     /**
      * @desc build pattern for getting and setting key & values of the Env file content
      * @method
-     * @name buildPattern
      * @private
      * @static
+     * @name buildPattern
      * @return {void}
      */
     private static function buildPattern(): void {
