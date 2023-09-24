@@ -18,7 +18,7 @@ final class Request {
      * @type {array}
      * @return {array}
      */
-    private $params;
+    private array $params;
 
 
 
