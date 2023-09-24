@@ -7,6 +7,7 @@
 class Autoload {
     /**
      * @desc JSON contracts content like classes & functions for Autoloading
+     * @prop
      * @private
      * @type {object}
      * @return {object}
@@ -51,9 +52,6 @@ class Autoload {
     private function loadClasses(): void {
         # register autoload for classes
         spl_autoload_register(function($className) {
-            # get all paths
-            $paths = $this->contracts->classes;
-
             # replace "\\" to "/" that converts to a string as a file path of a namespace
             $file = str_replace("\\", "/", $className) . ".php";
 
