@@ -20,12 +20,6 @@ class Autoload {
     public function __construct() {
         # set the json data as a object
         $this->contracts = $this->parse();
-
-        # load classes
-        $this->loadClasses();
-
-        # load functions
-        $this->loadFunctions();
     }
 
     /**
@@ -45,11 +39,11 @@ class Autoload {
     /**
      * @desc Load classes 
      * @method
-     * @private
+     * @public
      * @name loadClasses
      * @return {void}
      */
-    private function loadClasses(): void {
+    public function loadClasses(): void {
         # register autoload for classes
         spl_autoload_register(function($className) {
             # replace "\\" to "/" that converts to a string as a file path of a namespace
@@ -63,11 +57,11 @@ class Autoload {
     /**
      * @desc Load functions 
      * @method
-     * @private
+     * @public
      * @name loadFunctions
      * @return {void}
      */
-    private function loadFunctions(): void {
+    public function loadFunctions(): void {
         # get all paths
         $paths = $this->contracts->functions;
 
