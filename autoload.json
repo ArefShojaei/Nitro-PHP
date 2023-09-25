@@ -1,6 +1,5 @@
 {
-    "classes" : {
-        "Core\\" : "core/"
-    },
-    "functions" : []
+    "functions" : [
+        "core/helpers/"
+    ]
 }
