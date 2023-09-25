@@ -108,7 +108,7 @@ class View implements ViewInterface {
         self::compile();
         
         # extract the data array to variables
-        count($data) > 1 && extract($payload);
+        extract($data);
         
         # include the complied view
         require_once "storage/views/" . self::$id . ".php";
