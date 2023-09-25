@@ -2,7 +2,7 @@
 
 require_once "core/Autoload.php";
 
-new Autoload();
+$autoload = new Autoload();
+$autoload->loadClasses();
 
-
-echo "Nitro PHP";
+require_once "bootstrap/app.php";
