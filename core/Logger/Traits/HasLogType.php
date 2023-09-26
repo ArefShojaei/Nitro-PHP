@@ -3,6 +3,7 @@
 namespace Core\Logger\Traits;
 
 
+
 trait HasLogType {
     /**
      * @desc simple log config
