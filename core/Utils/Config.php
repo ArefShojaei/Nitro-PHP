@@ -9,7 +9,7 @@ namespace Core\Utils;
  * @package
  */
 use Core\{
-    Contracts\Interfaces\Config\Config as ConfigInterface,
+    Contracts\Interfaces\Config as ConfigInterface,
     Validators\Config as Validator
 };
 

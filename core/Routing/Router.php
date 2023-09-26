@@ -10,7 +10,7 @@ namespace Core\Routing;
  */
 use Core\Http\{ Request, Response };
 use Core\Routing\Traits\{ HasParam, HasExecute };
-use Core\Contracts\Interfaces\Routing\Router as RouterInterface;
+use Core\Contracts\Interfaces\Router as RouterInterface;
 
 /**
  * @desc Router system

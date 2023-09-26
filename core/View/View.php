@@ -19,7 +19,7 @@ use Core\View\Traits\{
 };
 use Core\{
     Validators\View as ViewValidator,
-    Contracts\Interfaces\View\View as ViewInterface
+    Contracts\Interfaces\View as ViewInterface
 };
 
 /**

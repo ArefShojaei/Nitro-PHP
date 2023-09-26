@@ -1,9 +1,22 @@
 <?php
 
+/**
+ * @namespace
+ */
 namespace Core\Validators;
 
+/**
+ * @package
+ */
+use Core\Contracts\Interfaces\ConfigValidator as ConfigValidatorInterface;
 
-class Config {
+
+/**
+ * @desc Config Validator
+ * @class
+ * @implements {ConfigValidatorInterface}
+ */
+class Config implements ConfigValidatorInterface {
     /**
      * @desc declare the "checkFileExists" method for checking file
      * @method

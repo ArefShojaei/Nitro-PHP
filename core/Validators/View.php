@@ -8,7 +8,7 @@ namespace Core\Validators;
 /**
  * @package
  */
-use Core\Contracts\Interfaces\View\ViewValidator as ViewValidatorInterface;
+use Core\Contracts\Interfaces\ViewValidator as ViewValidatorInterface;
 
 
 /**

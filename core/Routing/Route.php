@@ -12,7 +12,7 @@ use Core\Routing\{
     Router,
     Traits\HasMiddleware
 };
-use Core\Contracts\Interfaces\Routing\Route as RouteInterface;
+use Core\Contracts\Interfaces\Route as RouteInterface;
 
 
 /**

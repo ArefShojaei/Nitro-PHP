@@ -10,7 +10,7 @@ namespace Core\Http;
  */
 use Core\{
     View\View,
-    Contracts\Interfaces\Http\Response as ResponseInterface
+    Contracts\Interfaces\Response as ResponseInterface
 };
 
 

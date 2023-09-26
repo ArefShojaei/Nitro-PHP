@@ -8,7 +8,7 @@ namespace Core\Http;
 /**
  * @package
  */
-use Core\Contracts\Interfaces\Http\Request as RequestInterface;
+use Core\Contracts\Interfaces\Request as RequestInterface;
 
 
 /**
