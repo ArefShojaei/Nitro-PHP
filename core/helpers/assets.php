@@ -1,10 +1,5 @@
 <?php
 
-/**
- * @package
- */
-use Core\Utils\Config;
-
 
 /**
  * @desc css asset file path
@@ -13,7 +8,7 @@ use Core\Utils\Config;
  * @return {string} 
  */
 function css(string $filename): string {
-    return Config::find("app")->get("host") . "resources/assets/css/" . $filename . ".css";
+    return "http://" . $_SERVER["HTTP_HOST"] . "/resources/assets/css/" . $filename . ".css";
 }
 
 /**
@@ -23,7 +18,7 @@ function css(string $filename): string {
  * @return {string} 
  */
 function js(string $filename): string {
-    return Config::find("app")->get("host") . "resources/assets/js/" . $filename . ".js";
+    return "http://" . $_SERVER["HTTP_HOST"] . "/resources/assets/js/" . $filename . ".js";
 }
 
 /**
@@ -33,5 +28,5 @@ function js(string $filename): string {
  * @return {string} 
  */
 function asset(string $file): string {
-    return Config::find("app")->get("host") . "resources/assets/" . $file;
+    return "http://" . $_SERVER["HTTP_HOST"] . "resources/assets/" . $file;
 }
