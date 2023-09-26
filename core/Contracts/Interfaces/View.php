@@ -3,7 +3,7 @@
 /**
  * @namespace
  */
-namespace Core\Contracts\Interfaces\View;
+namespace Core\Contracts\Interfaces;
 
 
 /**

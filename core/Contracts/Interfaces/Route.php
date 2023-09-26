@@ -3,7 +3,7 @@
 /**
  * @namespace
  */
-namespace Core\Contracts\Interfaces\Routing;
+namespace Core\Contracts\Interfaces;
 
 
 /**

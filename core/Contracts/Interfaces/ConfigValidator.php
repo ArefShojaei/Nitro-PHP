@@ -3,7 +3,7 @@
 /**
  * @namespace
  */
-namespace Core\Contracts\Interfaces\Config;
+namespace Core\Contracts\Interfaces;
 
 
 /**

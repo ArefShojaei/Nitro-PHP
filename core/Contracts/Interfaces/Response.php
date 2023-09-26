@@ -3,7 +3,7 @@
 /**
  * @namespace
  */
-namespace Core\Contracts\Interfaces\Http;
+namespace Core\Contracts\Interfaces;
 
 
 /**
