@@ -1,7 +1,8 @@
 <?php
 
 use Core\Routing\Router;
-use Core\Utils\{ Env, Logger };
+use Core\Utils\Env;
+use Core\Logger\Logger;
 use Core\Http\{ Request, Response };
 
 
