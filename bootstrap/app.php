@@ -16,10 +16,8 @@ new Logger([
 
 new Env();
 
-$autoload->loadFunctions();
 
 Router::getInstance(
     new Request(),
     new Response()
 );
-
