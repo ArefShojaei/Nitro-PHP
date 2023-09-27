@@ -40,6 +40,18 @@ class Env implements EnvInterface {
      */
     private const FILE_PATH = self::FILE_EXTENTION;
 
+
+    /**
+     * @desc all variables of the .env file
+     * @prop
+     * @private
+     * @static
+     * @type {array}
+     * @default
+     * return {array}
+     */
+    private static $variables = [];
+
     
     /**
      * @constructor
@@ -76,8 +88,8 @@ class Env implements EnvInterface {
             # get value of the Env variable
             $value = $matches[2];
 
-            # set to "$_ENV" global variables
-            $_ENV[$key] = $value;
+            # set to the $variables of this class
+            self::$variables[$key] = $value;
         }, $content);
     }
 
@@ -96,7 +108,7 @@ class Env implements EnvInterface {
     }
 
     /**
-     * @desc get by key name of the Env 
+     * @desc get key by name 
      * @method
      * @private
      * @static
@@ -105,8 +117,7 @@ class Env implements EnvInterface {
      * @return {string}
      */      
     public static function get(string $key): string {
-        # get key from "$_ENV" global variables
-        return $_ENV[$key];
+        return self::$variables[$key];
     }
     
     /**
@@ -118,7 +129,6 @@ class Env implements EnvInterface {
      * @return {array}
      */       
     public static function all(): array {
-        # get all variables from "$_ENV" global variables
-        return $_ENV;
+        return self::$variables;
     }
 }
