@@ -2,6 +2,6 @@
 
 require_once "core/Autoload.php";
 
-$autoload = new Autoload();
+new Autoload();
 
 require_once "bootstrap/app.php";
