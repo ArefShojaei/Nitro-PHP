@@ -19,7 +19,7 @@ use Core\{
  * @class
  * @implements {ConfigInterface}
  */
-class Config implements ConfigInterface {
+class Config {
     /**
      * @desc base folder path 
      * @prop
@@ -70,8 +70,7 @@ class Config implements ConfigInterface {
      * @param {string} $key - key name
      * @return {string}
      */
-    public static function get(string $key): string {
-        # get value of the config data by name
+    public static function get(string $key): mixed {
         return self::$loadedConfigData[$key];
     }
 
@@ -84,7 +83,6 @@ class Config implements ConfigInterface {
      * @return {array} 
      */
     public static function all(): array {
-        # get all the config data file 
         return self::$loadedConfigData;
     }
 }
