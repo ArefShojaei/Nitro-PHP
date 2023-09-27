@@ -68,7 +68,7 @@ interface Response {
      * @method
      * @public
      * @name status
-     * @param {intiger} $code
+     * @param {integer} $code
      * @return {self}
      */
     public function status(int $code): self;
