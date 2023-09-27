@@ -7,7 +7,7 @@ namespace Core\Contracts\Interfaces;
 
 
 /**
- * @desc declare contracts for the Env Utility
+ * @desc declare contracts for Env Utility
  * @interface
  * @name Env
  */

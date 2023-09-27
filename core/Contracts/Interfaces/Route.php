@@ -7,7 +7,7 @@ namespace Core\Contracts\Interfaces;
 
 
 /**
- * @desc declare contracts for the Route request handler
+ * @desc declare contracts for Route request handler
  * @interface
  * @name Route
  */

@@ -7,7 +7,7 @@ namespace Core\Contracts\Interfaces;
 
 
 /**
- * @desc declare contracts for the Config Utility
+ * @desc declare contracts for Config Utility
  * @interface
  * @name Config
  */

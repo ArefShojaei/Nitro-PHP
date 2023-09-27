@@ -12,7 +12,7 @@ use Core\Http\{ Request, Response };
 
 
 /**
- * @desc declare contracts for the Router system
+ * @desc declare contracts for Router system
  * @interface
  * @name Router
  */

@@ -7,7 +7,7 @@ namespace Core\Contracts\Interfaces;
 
 
 /**
- * @desc declare contracts for the Env Validator
+ * @desc declare contracts for Env Validator
  * @interface
  * @name EnvValidator
  */
