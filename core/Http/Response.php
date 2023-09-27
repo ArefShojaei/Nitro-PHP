@@ -18,7 +18,7 @@ use Core\{
  * @desc Response HTTP
  * @class
  */
-class Response implements ResponseInterface {
+final class Response implements ResponseInterface {
     /**
      * @desc render view template
      * @method
