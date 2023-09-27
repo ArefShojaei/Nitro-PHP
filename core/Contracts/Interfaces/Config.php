@@ -32,7 +32,7 @@ interface Config {
      * @param {string} $key - key name
      * @return {string}
      */
-    public static function get(string $key): string;
+    public static function get(string $key): mixed;
     
     /**
      * @desc declare the "all" method for getting all loaded config data
