@@ -15,7 +15,7 @@ use Core\Contracts\Interfaces\Request as RequestInterface;
  * @desc Request HTTP
  * @class
  */
-final class Request {
+class Request {
     /**
      * @desc route param values
      * @prop
