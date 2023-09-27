@@ -20,6 +20,13 @@ use Core\{
  * @implements {CommandInterface}
  */
 class Env implements CommandInterface {
+    /**
+     * @desc show env variables
+     * @method
+     * @public
+     * @name show
+     * @return {void}
+     */
     public function show(): void {
         # get all variables from the ".env"
         $variables = EnvUtil::all();
