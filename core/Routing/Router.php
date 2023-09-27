@@ -97,10 +97,6 @@ class Router implements RouterInterface {
      * @param {object} $response - HTTP response
      */
     private function __construct(object $request, object $response) {
-        # declare http properties
-        $this->request = $request;
-        $this->response = $response;
-
         # extract url
         $parsedURL = parse_url($_SERVER['REQUEST_URI']);
 
@@ -111,7 +107,7 @@ class Router implements RouterInterface {
         $method = $_SERVER['REQUEST_METHOD'];
         
         # call the fundRoute method 
-        self::findRoute($url, $method, [$this->request, $this->response]);
+        self::findRoute($url, $method, [$request, $response]);
     }
     
     /**
