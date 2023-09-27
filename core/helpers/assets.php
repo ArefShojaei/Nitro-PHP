@@ -1,5 +1,13 @@
 <?php
 
+/**
+ * @desc get protocol and host of a URL
+ * @function getProtocolAndHost
+ * @return {string} 
+ */
+function getProtocolAndHost(): string {
+    return $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . "/"; 
+}
 
 /**
  * @desc css asset file path
@@ -8,7 +16,7 @@
  * @return {string} 
  */
 function css(string $filename): string {
-    return "http://" . $_SERVER["HTTP_HOST"] . "/resources/assets/css/" . $filename . ".css";
+    return getProtocolAndHost() . resourcesPath("/assets/css/") . $filename . ".css";
 }
 
 /**
@@ -18,7 +26,7 @@ function css(string $filename): string {
  * @return {string} 
  */
 function js(string $filename): string {
-    return "http://" . $_SERVER["HTTP_HOST"] . "/resources/assets/js/" . $filename . ".js";
+    return getProtocolAndHost() . resourcesPath("/assets/js/") . $filename . ".js";
 }
 
 /**
@@ -27,6 +35,6 @@ function js(string $filename): string {
  * @param {string} $file - asset file + path
  * @return {string} 
  */
-function asset(string $file): string {
-    return "http://" . $_SERVER["HTTP_HOST"] . "resources/assets/" . $file;
+function asset(string $filePath): string {
+    return getProtocolAndHost() . resourcesPath("/assets/") . ltrim($filePath, "/");
 }
