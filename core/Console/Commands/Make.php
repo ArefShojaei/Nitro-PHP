@@ -113,7 +113,7 @@ class Make implements CommandInterface {
             
         }
 
-        # throw a error execption
+        # throw an error exception
         throw new \Exception("The \"{$this->type}\" type doesn't exists!");
     }
 }
