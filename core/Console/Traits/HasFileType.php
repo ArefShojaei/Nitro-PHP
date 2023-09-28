@@ -32,7 +32,14 @@ trait HasFileType {
      * @param {string} $filename
      * @return {string}
      */
-    private function middleware($filename): string {}
+    private function middleware($filename): string {
+        $this->fileContent .= $this->addPhpTag() . $this->addBr(2);
+        $this->fileContent .= $this->addNamespace("App\Http\Middlewares") . $this->addBr(2);
+        $this->fileContent .= $this->addUse("Core\Http\{ Request, Response }") . $this->addBr(3);
+        $this->fileContent .= $this->addClass($filename);
+        
+        return $this->fileContent;
+    }
 
     /**
      * @desc service file content
