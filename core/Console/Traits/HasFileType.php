@@ -65,5 +65,11 @@ trait HasFileType {
      * @param {string} $filename
      * @return {string}
      */
-    private function model($filename): string {}
+    private function model($filename): string {
+        $this->fileContent .= $this->addPhpTag() . $this->addBr(2);
+        $this->fileContent .= $this->addNamespace("App\Http\Models") . $this->addBr(3);
+        $this->fileContent .= $this->addClass($filename);
+        
+        return $this->fileContent;
+    }
 }
