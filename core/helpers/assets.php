@@ -1,15 +1,6 @@
 <?php
 
 /**
- * @desc get protocol and host of a URL
- * @function getProtocolAndHost
- * @return {string} 
- */
-function getProtocolAndHost(): string {
-    return $_SERVER["REQUEST_SCHEME"] . "://" . $_SERVER["HTTP_HOST"] . "/"; 
-}
-
-/**
  * @desc css asset file path
  * @function css
  * @param {string} $filename - css filename
