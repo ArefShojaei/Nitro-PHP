@@ -26,7 +26,7 @@ trait HasContainer {
      * @public
      * @name bind
      * @param {string} $abstract - object name
-     * @return {object}
+     * @return {object|callback}
      */
     public function resolve(string $abstract): object|callable {
         $concrete = isset($this->instances[$abstract]) && $this->instances[$abstract];
