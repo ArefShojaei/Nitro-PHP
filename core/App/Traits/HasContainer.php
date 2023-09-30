@@ -24,7 +24,7 @@ trait HasContainer {
      * @desc get the object of the container 
      * @method
      * @public
-     * @name bind
+     * @name resolve
      * @param {string} $abstract - object name
      * @return {object|callback}
      */
