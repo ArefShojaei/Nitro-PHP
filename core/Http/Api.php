@@ -83,7 +83,7 @@ class Api implements ApiInterface {
      */
     public function get(string $endPoint): object|array {
         # base options
-        $this->setBaseOptions();
+        $this->setBaseOptions($endPoint);
 
         # custom http method configuration
         $this->setMethod("GET");
@@ -103,7 +103,7 @@ class Api implements ApiInterface {
      */
     public function post(string $endPoint, array $data = []): object|array {
         # base options
-        $this->setBaseOptions();
+        $this->setBaseOptions($endPoint);
 
         # custom http method configuration
         $this->setMethod("POST");
@@ -129,7 +129,7 @@ class Api implements ApiInterface {
      */
     public function put(string $endPoint, array $data = []): object|array {
         # base options
-        $this->setBaseOptions();
+        $this->setBaseOptions($endPoint);
 
         # custom http method configuration
         $this->setMethod("PUT");
@@ -155,7 +155,7 @@ class Api implements ApiInterface {
      */
     public function patch(string $endPoint, array $data = []): object|array {
         # base options
-        $this->setBaseOptions();
+        $this->setBaseOptions($endPoint);
 
         # custom http method configuration
         $this->setMethod("PATCH");
@@ -181,7 +181,7 @@ class Api implements ApiInterface {
      */
     public function delete(string $endPoint, array $data = []): object|array {
         # base options
-        $this->setBaseOptions();
+        $this->setBaseOptions($endPoint);
 
         # custom http method configuration
         $this->setMethod("DELETE");
