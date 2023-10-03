@@ -18,7 +18,7 @@ interface Api {
      * @public
      * @name get
      * @param {string} $endPoint - api end-point
-     * @return {void}
+     * @return {object|array}
      */
     public function get(string $endPoint): object|array;
     
@@ -29,7 +29,7 @@ interface Api {
      * @name post
      * @param {string} $endPoint - api end-point
      * @param {array} $data
-     * @return {void}
+     * @return {object|array}
      */
     public function post(string $endPoint, array $data = []): object|array;
     
@@ -40,7 +40,7 @@ interface Api {
      * @name put
      * @param {string} $endPoint - api end-point
      * @param {array} $data
-     * @return {void}
+     * @return {object|array}
      */
     public function put(string $endPoint, array $data = []): object|array;
     
@@ -51,7 +51,7 @@ interface Api {
      * @name patch
      * @param {string} $endPoint - api end-point
      * @param {array} $data
-     * @return {void}
+     * @return {object|array}
      */
     public function patch(string $endPoint, array $data = []): object|array;
     
@@ -62,7 +62,7 @@ interface Api {
      * @name delete
      * @param {string} $endPoint - api end-point
      * @param {array} $data
-     * @return {void}
+     * @return {object|array}
      */
     public function delete(string $endPoint, array $data = []): object|array;
 }
