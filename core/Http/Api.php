@@ -8,7 +8,10 @@ namespace Core\Http;
 /**
  * @package
  */
-use Core\Contracts\Interfaces\Api as ApiInterface;
+use Core\{
+    Http\Traits\HasCurlSetter,
+    Contracts\Interfaces\Api as ApiInterface
+};
 
 
 /**
@@ -17,6 +20,12 @@ use Core\Contracts\Interfaces\Api as ApiInterface;
  * @implements {ApiInterface}
  */
 class Api implements ApiInterface {
+    /**
+     * @desc import traits
+     */
+    use HasCurlSetter;
+
+
     /**
      * @desc base api url
      * @prop
@@ -65,7 +74,7 @@ class Api implements ApiInterface {
     }
 
     /**
-     * @desc
+     * @desc curl the GET http request
      * @method
      * @public
      * @name get
@@ -73,18 +82,18 @@ class Api implements ApiInterface {
      * @return {object|array}
      */
     public function get(string $endPoint): object|array {
-        # set config for url
-        curl_setopt($this->curl, CURLOPT_URL, $this->baseURL . $endPoint);
-        
-        # set config for the return transfer
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+        # base options
+        $this->setBaseOptions();
+
+        # custom http method configuration
+        $this->setMethod("GET");
 
         # execute process
         return $this->execute();
     }
     
     /**
-     * @desc
+     * @desc curl the POST http request
      * @method
      * @public
      * @name post
@@ -93,27 +102,24 @@ class Api implements ApiInterface {
      * @return {object|array}
      */
     public function post(string $endPoint, array $data = []): object|array {
-        # url configuration
-        curl_setopt($this->curl, CURLOPT_URL, $this->baseURL . $endPoint);
-        
-        # the return transfer configuration
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
-        
-        # the POST method configuration
-        curl_setopt($this->curl, CURLOPT_POST, true);
+        # base options
+        $this->setBaseOptions();
+
+        # custom http method configuration
+        $this->setMethod("POST");
         
         # the request body data
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, json_encode($data));
+        $this->setBody($data);
         
         # content-type header configuration
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+        $this->setHeader();
         
         # set config for the return transfer
         return $this->execute();
     }
     
     /**
-     * @desc
+     * @desc curl the PUT http request
      * @method
      * @public
      * @name put
@@ -122,27 +128,24 @@ class Api implements ApiInterface {
      * @return {object|array}
      */
     public function put(string $endPoint, array $data = []): object|array {
-        # url configuration
-        curl_setopt($this->curl, CURLOPT_URL, $this->baseURL . $endPoint);
-
-        # the return transfer configuration
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+        # base options
+        $this->setBaseOptions();
 
         # custom http method configuration
-        curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'PUT');
-
+        $this->setMethod("PUT");
+        
         # the request body data
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, json_encode($data));
-
+        $this->setBody($data);
+        
         # content-type header configuration
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+        $this->setHeader();
 
         # set config for the return transfer
         return $this->execute();
     }
     
     /**
-     * @desc
+     * @desc curl the PATCH http request
      * @method
      * @public
      * @name patch
@@ -151,27 +154,24 @@ class Api implements ApiInterface {
      * @return {object|array}
      */
     public function patch(string $endPoint, array $data = []): object|array {
-        # url configuration
-        curl_setopt($this->curl, CURLOPT_URL, $this->baseURL . $endPoint);
-
-        # the return transfer configuration
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+        # base options
+        $this->setBaseOptions();
 
         # custom http method configuration
-        curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'PATCH');
-
+        $this->setMethod("PATCH");
+        
         # the request body data
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, json_encode($data));
-
+        $this->setBody($data);
+        
         # content-type header configuration
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+        $this->setHeader();
 
         # set config for the return transfer
         return $this->execute();
     }
     
     /**
-     * @desc
+     * @desc curl the DELETE http request
      * @method
      * @public
      * @name delete
@@ -180,20 +180,17 @@ class Api implements ApiInterface {
      * @return {object|array}
      */
     public function delete(string $endPoint, array $data = []): object|array {
-        # url configuration
-        curl_setopt($this->curl, CURLOPT_URL, $this->baseURL . $endPoint);
-
-        # the return transfer configuration
-        curl_setopt($this->curl, CURLOPT_RETURNTRANSFER, true);
+        # base options
+        $this->setBaseOptions();
 
         # custom http method configuration
-        curl_setopt($this->curl, CURLOPT_CUSTOMREQUEST, 'DELETE');
-
+        $this->setMethod("DELETE");
+        
         # the request body data
-        curl_setopt($this->curl, CURLOPT_POSTFIELDS, json_encode($data));
-
+        $this->setBody($data);
+        
         # content-type header configuration
-        curl_setopt($this->curl, CURLOPT_HTTPHEADER, ["Content-Type: application/json"]);
+        $this->setHeader();
 
         # set config for the return transfer
         return $this->execute();
