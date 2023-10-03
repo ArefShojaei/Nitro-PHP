@@ -14,7 +14,7 @@ trait HasCurlSetter {
      * @name setBaseOptions
      * @return {void}
      */
-    private function setBaseOptions(): void {
+    private function setBaseOptions($endPoint): void {
         # set config for url
         curl_setopt($this->curl, CURLOPT_URL, $this->baseURL . $endPoint);
         
