@@ -3,7 +3,7 @@
 /**
  * @namespace
  */
-namespace Core;
+namespace Core\App;
 
 /**
  * @package
@@ -31,4 +31,17 @@ class App {
      * @return {array}
      */
     private array $instances = [];
+
+
+    /**
+     * @desc start the app
+     * @method
+     * @public
+     * @name start
+     * @return {void}
+     */
+    public function boot() {
+        $this->regsiterProviders();
+        $this->regsiterRoutes();
+    }
 }

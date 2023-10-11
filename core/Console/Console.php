@@ -37,7 +37,7 @@ class Console {
         # run Welcome message
         if($commands_length == self::WELCOME_COMMAND) {
             # get the welcome class with 'namespace'
-            $class = "core\\Console\\Commands\\Welcome";
+            $class = "Core\\Console\\Commands\\Welcome";
         
             # get instance of the class and call the "show" method
             (new $class())->show();
@@ -69,7 +69,7 @@ class Console {
      * @method
      * @name dispatch
      * @private
-     * @param {string} $command 
+     * @param {string} $command
      * @param {array} $params
      * @return {void}
      */
@@ -78,7 +78,7 @@ class Console {
         $className =  ucfirst(ltrim($command, "--"));
         
         # get the class by namespace
-        $class = "core\\Console\\Commands\\" . $className;
+        $class = "Core\\Console\\Commands\\" . $className;
 
         # check for existsing the class
         if(!class_exists($class)) {
