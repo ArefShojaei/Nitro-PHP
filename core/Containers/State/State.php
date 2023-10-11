@@ -14,7 +14,7 @@ class State {
      * @desc states list
      * @prop
      * @private
-     * @type array
+     * @type {array}
      * @default
      * @return {array}
      */
