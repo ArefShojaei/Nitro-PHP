@@ -25,12 +25,12 @@ class Event {
      * @desc add event
      * @method
      * @public
-     * @name addListener
+     * @name on
      * @param {string} $event - event name
      * @param {callable} $action - event action
      * @return {void}
      */
-    public function addListener(string $event, callable $action): void {
+    public function on(string $event, callable $action): void {
         $this->events[$event] = $action;
     }
 
