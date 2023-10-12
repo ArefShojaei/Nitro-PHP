@@ -22,7 +22,7 @@ class Event {
 
 
     /**
-     * @desc add event
+     * @desc listen to event
      * @method
      * @public
      * @name on
@@ -31,7 +31,9 @@ class Event {
      * @return {void}
      */
     public function on(string $event, callable $action): void {
-        $this->events[$event] = $action;
+        $data = $this->events[$event];
+
+        $action($data);
     }
 
     /**
@@ -44,8 +46,6 @@ class Event {
      * @return {void}
      */
     public function dispatch(string $event, mixed $data): void {
-        $action = $this->events[$event];
-
-        $action($data);
+        $this->events[$event] = $data;
     }
 }
