@@ -8,7 +8,10 @@ namespace Core\App;
 /**
  * @package
  */
-use Core\App\Traits\{ HasContainer };
+use Core\{
+    App\Traits\HasRegister,
+    Containers\Ioc\Ioc as Container
+};
 
 
 
@@ -16,21 +19,11 @@ use Core\App\Traits\{ HasContainer };
  * @desc App container processes
  * @class
  */
-class App {
+class App extends Container {
     /**
      * @desc import traits
      */
-    use HasContainer;
-
-    /**
-     * @desc object instances
-     * @prop
-     * @private
-     * @type {array}
-     * @default
-     * @return {array}
-     */
-    private array $instances = [];
+    use HasRegister;
 
 
     /**
@@ -40,8 +33,8 @@ class App {
      * @name start
      * @return {void}
      */
-    public function boot() {
-        $this->regsiterProviders();
-        $this->regsiterRoutes();
+    public function start($app): void {
+        $this->registerRoutes();
+        $this->registerContainers($app);
     }
 }
