@@ -4,4 +4,8 @@ require_once "core/Autoload.php";
 
 new Autoload();
 
-require_once "bootstrap/app.php";
+$event = require_once "bootstrap/app.php";
+
+$event->on("app.start", function($app) {
+    $app->start($app);
+});
