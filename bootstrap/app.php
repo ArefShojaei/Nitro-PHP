@@ -1,51 +1,57 @@
 <?php
 
-use Core\Routing\Router;
-use Core\Utils\Env;
-use Core\Logger\Logger;
+/**
+ * @package
+ */
+use Core\{
+    Routing\Router,
+    Utils\Env,
+    Logger\Logger,
+    App\App
+};
 use Core\Http\{ Request, Response };
-use Core\App\App;
+use Core\Containers\{
+    Event\Event,
+    State\State,
+    Ioc\Ioc,
+};
 
 
-require_once "routes/web.php";
-require_once "routes/api.php";
-
-
-// new Logger([
-//     "type" => "simple"
-// ]);
-
-// new Env();
-
+# create an instance of the App
 $app = new App();
 
+
+# use IOC container for binding objects
+$app->bind("Event", function($container) {
+    return new Event();
+});
+
 $app->bind("Logger", function($container) {
-    return new Logger([
-        "type" => "simple"
-    ]);
+    return new Logger(["type" => "dev"]);
+});
+
+$app->bind("Request", function($container) {
+    return new Request();
+});
+
+$app->bind("Response", function($container) {
+    return new Response();
+});
+
+$app->singleton("Router", function($container) {
+    return Router::getInstance(
+        $container->resolve("Request"),
+        $container->resolve("Response")
+    );
 });
 
 
+# get Event object of the container objects
+$event = $app->resolve("Event");
 
-$app->resolve("Logger");
-
-$app->bind("Env", function($container) {
-    return new Env();
-});
-
-$app->resolve("Env");
+# disaptch new event for starting the app
+$event->dispatch("app.start", $app);
 
 
-// $app->singleton("Router", "Router::getInstance", function($container) {
-//     return [
-//         $container->resolve("Request"),
-//         $container->resolve("Response"),
-//     ];
-// });
-
-// return $app;
-
-Router::getInstance(
-    new Request(),
-    new Response()
-);
+# return event object
+return $event;
