@@ -16,6 +16,7 @@ interface Bcrypt {
      * @desc declare the "hash" method for hashing password
      * @method
      * @public
+     * @static
      * @name hash
      * @param {string} $password
      * @return {string}
@@ -26,7 +27,8 @@ interface Bcrypt {
      * @desc declare the "compare" method for comparing password
      * @method
      * @public
-     * @name verify
+     * @static
+     * @name compare
      * @param {string} $password
      * @param {string} $hashedPassword
      * @return {boolean}
