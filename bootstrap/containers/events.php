@@ -4,7 +4,7 @@
  * @desc register events
  * @return {callback}
  */
-return function($app) {
+return function(object $app): object {
     # get Event object
     $event = $app->resolve("Event");
 
