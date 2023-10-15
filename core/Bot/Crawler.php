@@ -85,16 +85,4 @@ class Crawler {
         # return the DOM object
         return $dom;
     }
-
-    /**
-     * @desc convert DOM selector to xPath selector
-     * @method
-     * @private
-     * @name convertSelectorToXPath
-     * @param {string} $selector - DOM selector
-     * @return {string}
-     */
-    private function convertSelectorToXPath(string $selector): string {
-        return "//{$selector}";
-    }
 }
