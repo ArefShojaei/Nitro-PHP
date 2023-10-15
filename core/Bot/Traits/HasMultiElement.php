@@ -15,8 +15,8 @@ trait HasMultiElement {
      * @param {string} $selectro - DOM selector
      * @return {self}
      */
-    public function findAll(string $selector): self {
-        $this->elements = $this->document->query($this->convertSelectorToXPath($selector));
+    public function findAll(string $xPath): self {
+        $this->elements = $this->document->query($this->$xPath);
 
         return $this;
     }

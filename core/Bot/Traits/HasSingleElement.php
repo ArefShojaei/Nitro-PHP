@@ -12,8 +12,8 @@ trait HasSingleElement {
      * @param {string} $selector - DOM selector
      * @return {self}
      */
-    public function find(string $selector): self {
-        $this->element = $this->document->query($this->convertSelectorToXPath($selector));
+    public function find(string $xPath): self {
+        $this->element = $this->document->query($this->$xPath);
 
         return $this;
     }
