@@ -14,6 +14,7 @@ use Core\Contracts\Interfaces\Mysql as MysqlInterface;
 /**
  * @desc mysql driver
  * @class
+ * @implements {MysqlInterface}
  */
 class Mysql implements MysqlInterface {
     private static $instance;
