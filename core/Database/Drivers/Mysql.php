@@ -17,10 +17,31 @@ use Core\Contracts\Interfaces\Mysql as MysqlInterface;
  * @implements {MysqlInterface}
  */
 class Mysql implements MysqlInterface {
-    private static $instance;
-    private $connection;
+    /**
+     * @desc the Mysql instance
+     * @prop
+     * @private
+     * @static
+     * @type {object}
+     * @return {object} 
+     */
+    private static object $instance;
+
+    /**
+     * @desc database connection
+     * @prop
+     * @private
+     * @static
+     * @type {object}
+     * @return {object} 
+     */
+    private object $connection;
 
 
+    /**
+     * @constructor
+     * @private
+     */
     private function __construct() {
         try {
             $this->connection = new \PDO("mysql:host=localhost;dbname=sample;charset=utf8", "root", "", [\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION, \PDO::ATTR_DEFAULT_FETCH_MODE => \PDO::FETCH_OBJ]);
@@ -29,6 +50,14 @@ class Mysql implements MysqlInterface {
         }
     }
 
+    /**
+     * @desc get instance of the Mysql object
+     * @method
+     * @public
+     * @static
+     * @name getInstance
+     * @return {object}
+     */
     public static function getInstance(): self {
         if(!self::$instance) {
             self::$instance = new self();
@@ -37,6 +66,13 @@ class Mysql implements MysqlInterface {
         return self::$instance;
     }
 
+    /**
+     * @desc get database connection object
+     * @method
+     * @public
+     * @name getConnection
+     * @return {object}
+     */
     public function getConnection(): object {
         return $this->connection;
     }
