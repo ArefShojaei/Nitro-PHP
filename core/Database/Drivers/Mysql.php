@@ -25,7 +25,7 @@ class Mysql implements MysqlInterface {
      * @type {object}
      * @return {object} 
      */
-    private static object $instance;
+    private static $instance;
 
     /**
      * @desc database connection
