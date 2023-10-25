@@ -41,13 +41,13 @@ class Config {
     /**
      * @desc find the config file
      * @method
-     * @public
+     * @private
      * @static
      * @name find
      * @param {string} $filename - the config filename
      * return {self}
      */
-    public static function find(string $filename): self {
+    private static function find(string $filename): self {
         # get full file path
         $file = self::BASE_PATH . $filename . ".php";
         
@@ -67,10 +67,15 @@ class Config {
      * @public
      * @static
      * @name get
-     * @param {string} $key - key name
-     * @return {string}
+     * @param {string} $keyword
+     * @example Config::get("app.name") # Nitro-PHP
+     * @return {mixed}
      */
-    public static function get(string $key): mixed {
+    public static function get(string $keyword): mixed {
+        list($filename, $key) = explode(".", $keyword);
+
+        self::find($filename);
+
         return self::$loadedConfigData[$key];
     }
 
