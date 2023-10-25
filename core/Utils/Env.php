@@ -114,10 +114,11 @@ class Env implements EnvInterface {
      * @static
      * @name get
      * @param {string} $key - key name
+     * @param {string} $default - default value
      * @return {string}
      */      
-    public static function get(string $key): string {
-        return self::$variables[$key];
+    public static function get(string $key, string $default = ''): string {
+        return (!self::$variables[$key] && strlen($default)) ? $default : self::$variables[$key];
     }
     
     /**
