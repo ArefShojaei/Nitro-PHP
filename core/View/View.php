@@ -23,16 +23,17 @@ use Core\{
 };
 
 /**
- * @desc View for template engine system 
+ * @desc View for template engine system
  * @class
  */
-class View implements ViewInterface {
+class View  implements ViewInterface {
     /**
      * @desc import traits
      */
-    use HasIncludeContent, HasCommentMessage, 
-        HasDynamicExpression, HasLoop, 
+    use HasIncludeContent, HasCommentMessage,
+        HasDynamicExpression, HasLoop,
         HasCondition, HasRegexPattern;
+
 
     /**
      * @desc view file extention
@@ -45,14 +46,24 @@ class View implements ViewInterface {
     private const FILE_EXTENTION = ".hbs";
 
     /**
-     * @desc base view folder path
+     * @desc view base path
      * @prop
      * @private
      * @constant {string}
      * @default
      * @return {string}
      */
-    private const BASE_PATH = "resources/views/";
+    private const VIEW_BASE_PATH = "resources/views/";
+
+    /**
+     * @desc storage base path
+     * @prop
+     * @private
+     * @constant {string}
+     * @default
+     * @return {string}
+     */
+    private const STORAGE_BASE_PATH = "storage/views/";
 
 
 
@@ -65,7 +76,7 @@ class View implements ViewInterface {
      * @return {string}
      */
     private static string $id;
-    
+
     /**
      * @desc view file
      * @prop
@@ -74,7 +85,7 @@ class View implements ViewInterface {
      * @return {string}
      */
     private static string $file;
-    
+
     /**
      * @desc view file content
      * @prop
@@ -85,74 +96,74 @@ class View implements ViewInterface {
      */
     private static string $content;
 
-    
+
 
     /**
-     * @desc make new view file
+     * @desc make an new view template file
      * @method
      * @public
      * @static
-     * @name {make}
+     * @name make
      * @param {string} $view - view name
      * @param {array} $data - all dynamic variables for using in the view
      * @return {void}
      */
     public static function make(string $view, array $data = []): void {
         # view file
-        self::$file = self::BASE_PATH . $view . self::FILE_EXTENTION;
-        
+        self::$file = self::VIEW_BASE_PATH . $view . self::FILE_EXTENTION;
+
         # generate new ID for the view
         self::$id = md5($view);
-       
+
         # compile the view
         self::compile();
-        
+
         # extract the data array to variables
         extract($data);
-        
+
         # include the complied view
-        require_once "storage/views/" . self::$id . ".php";
+        require_once self::STORAGE_BASE_PATH . self::$id . ".php";
     }
 
     /**
-     * @desc log all requests and putting the data to the file content 
+     * @desc compile view engine
      * @method
      * @private
-     * @name {log}
-     * @param {string} $method - method name
+     * @static
+     * @name compile
      * @return {void}
      */
     private static function compile(): void {
         # call the "parse" method for getting view content
         self::parse();
-        
-        # call the "includePartial" method for using the template engine utility 
+
+        # call the "includePartial" method for using the template engine utility
         self::includePartial();
-        
-        # call the "includeComment" method for using the template engine utility 
+
+        # call the "includeComment" method for using the template engine utility
         self::includeComment();
-        
-        # call the "includeForeach" method for using the template engine utility 
+
+        # call the "includeForeach" method for using the template engine utility
         self::includeForeach();
-        
-        # call the "includeExpression" method for using the template engine utility 
+
+        # call the "includeExpression" method for using the template engine utility
         self::includeExpression();
-        
-        # call the "includeIfStatement" method for using the template engine utility 
+
+        # callthe "includeIfStatement" method for using the template engine utility
         self::includeIfStatement();
 
-        
+
         # put the updated content in the compiled new view
-        file_put_contents("storage/views/" . self::$id . ".php", self::$content);
+        file_put_contents(self::STORAGE_BASE_PATH  . self::$id . ".php", self::$content);
     }
-    
+
 
     /**
-     * @desc log all requests and putting the data to the file content 
+     * @desc parse view template content
      * @method
      * @private
-     * @name {log}
-     * @param {string} $method - method name
+     * @static
+     * @name parse
      * @return {void}
      */
     private static function parse(): void {
