@@ -19,7 +19,7 @@ use Core\{
  * @class
  * @implements {EnvInterface}
  */
-class Env implements EnvInterface {
+class Env {
     /**
      * @desc env file extention
      * @prop
@@ -78,15 +78,18 @@ class Env implements EnvInterface {
         $content = self::parse(self::FILE_PATH);
 
         # declare regex pattern for getting keys & values
-        $pattern = "/(\w+)\s*=\s*(.+)/";
+        $pattern = "/(?<key>[A-Z_]+)\s*=\s*?(?<value>.+)/";
 
         # check for matching the regex 
         preg_replace_callback($pattern, function($matches) {
             # get key of the Env variable
-            $key = $matches[1];
+            $key = $matches["key"];
             
             # get value of the Env variable
-            $value = $matches[2];
+            $value = trim($matches["value"]);
+
+            # check for making false the value and will set "null" value for the $value
+            !strlen($value) && $value = null;
 
             # set to the $variables of this class
             self::$variables[$key] = $value;
@@ -117,7 +120,7 @@ class Env implements EnvInterface {
      * @param {string} $value - default value
      * @return {string}
      */      
-    public static function get(string $key, string|null $value = null): string {
+    public static function get(string $key, string $value = ''): string|null {
         return (!self::$variables[$key] && strlen($value)) ? $value : self::$variables[$key];
     }
     
