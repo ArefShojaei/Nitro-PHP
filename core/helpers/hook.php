@@ -21,7 +21,7 @@ function addHook(string $name): void {
  * @return {void}
  */
 function useHook(string $name, callable $handler): void {
-    foreach($$GLOBALS["container"]["hook"]["actions"] as $action) {
+    foreach($GLOBALS["container"]["hook"]["actions"] as $action) {
         if($name === $action) {
             $handler();
             exit;
